@@ -1,12 +1,17 @@
-name: Cron Test
+name: Update Economic Data
 
 on:
-  schedule:
-    - cron: "*/4 * * * *"
   workflow_dispatch:
+  schedule:
+    - cron: '0/15 * * * *'
 
 jobs:
-  test:
+  update:
     runs-on: ubuntu-latest
     steps:
-      - run: date
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Update
+        run: |
+          echo "Updating economic data"
